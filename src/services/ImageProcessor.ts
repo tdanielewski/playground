@@ -67,7 +67,7 @@ export class ImageProcessor {
     return ctx.getImageData(0, 0, width, height).data;
   }
 
-  buildPointCloud(depthData: Uint8Array, colorData: Uint8ClampedArray, width: number, height: number, depthScale = 1.0): PointCloudData {
+  buildPointCloud(depthData: Uint8Array, colorData: Uint8ClampedArray, width: number, height: number, depthScale = 0.15): PointCloudData {
     const numPoints = width * height;
     const requiredBytes = numPoints * 3 * 4 * 2;
     if (requiredBytes > 2_000_000_000) {
@@ -92,7 +92,7 @@ export class ImageProcessor {
       }
     }
 
-    const pointSize = Math.max(0.005, (2.0 / Math.max(width, height)) * 1.5);
+    const pointSize = Math.max(0.005, (2.0 / Math.max(width, height)) * 1.0);
     return { positions, colors, pointCount: numPoints, pointSize };
   }
 

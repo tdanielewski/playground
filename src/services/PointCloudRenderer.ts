@@ -127,7 +127,7 @@ export class PointCloudRenderer {
   }
 
   resetCamera(): void {
-    this.camera.position.set(0, 0, 2);
+    this.camera.position.set(0, -0.15, 2);
     this.controls.target.set(0, 0, 0);
     this.controls.update();
   }
